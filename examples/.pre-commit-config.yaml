@@ -1,0 +1,7 @@
+repos:
+# [START text-include]
+  - repo: https://github.com/ad-m/pre-commit-hook-text-include
+    rev: 0.0.1  # or specific tag
+    hooks:
+        - id: text-include
+# [END text-include]
