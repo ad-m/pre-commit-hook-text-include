@@ -40,7 +40,7 @@ def read_section_lines(params):
         section_lines.append(f"{params['post']}\n")
     return section_lines
 
-def render_content(lines):
+def render_lines(lines):
     for index, params in iterate_sections(lines):
         section_lines = read_section_lines(params)
         include_start_pos = index+1
@@ -61,9 +61,10 @@ def main(argv: Union[Sequence[str], None] = None) -> int:
     for filename in args.filenames:
         with open(filename, 'r+') as f:
             lines = f.readlines()
-            new_content = render_content(lines)
-
-            if "".join(lines) != new_content:
+            content = "".join(lines)
+            new_lines = render_lines(lines)
+            new_content = "".join(new_lines)
+            if content != new_content:
                 print(f'Fixing file `{filename}`')
                 if not args.dry_run:
                     f.seek(0)
