@@ -1,4 +1,5 @@
 -   id: check-text-include
     name: check for include
     description: prevents giant files from being committed.
-    language: docker
+    entry: check-text-include
+    language: python
